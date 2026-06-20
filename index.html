@@ -126,10 +126,11 @@
             justify-content: space-between;
             z-index: 9999;
             gap: 12px;
-            background: rgba(255,255,255,0.07);
-            padding: 8px 16px;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 16px;
             border-radius: 10px;
             backdrop-filter: blur(6px);
+            transition: all 0.3s ease;
         }
 
         .nav-toggle {
@@ -173,22 +174,55 @@
         .nav-toggle.open .hamburger::after { opacity: 0; }
 
         @media (max-width: 900px) {
+            .topnav {
+                left: 10px;
+                right: 10px;
+                padding: 10px 12px;
+                border-radius: 8px;
+            }
             .nav-toggle { display: flex; }
             .nav-links {
                 display: none;
                 position: absolute;
-                right: 18px;
-                top: 64px;
-                background: rgba(255,255,255,0.03);
+                right: 10px;
+                top: 60px;
+                background: rgba(255,255,255,0.95);
                 padding: 12px 14px;
                 border-radius: 8px;
                 flex-direction: column;
                 gap: 8px;
-                box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+                box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+                z-index: 10000;
             }
             .nav-links.show { display: flex; }
             .nav-links li { margin: 0; }
-            .nav-links li a { display: block; padding: 8px 12px; }
+            .nav-links li a { 
+                display: block; 
+                padding: 10px 12px;
+                color: rgba(60,40,20,0.95);
+                font-weight: 500;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .topnav {
+                left: 8px;
+                right: 8px;
+                top: 10px;
+                padding: 8px 10px;
+            }
+            .logo {
+                font-size: 0.9rem;
+            }
+            .nav-links {
+                right: 8px;
+                top: 56px;
+                background: rgba(255,255,255,0.96);
+            }
+            .nav-links li a {
+                padding: 12px 14px;
+                font-size: 0.9rem;
+            }
         }
 
         .logo {
@@ -249,9 +283,34 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.6) 60%);
+            background: linear-gradient(180deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.8) 60%);
             pointer-events: none;
             z-index: 0;
+        }
+
+        .section-bg-1,
+        .section-bg-2 {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Make History and Credits text more visible on background images */
+        .history, .credits {
+            color: #111 !important;
+        }
+
+        .history p,
+        .credits p,
+        .credits-table td,
+        .credits-table th {
+            color: #111;
+            font-weight: 700;
+            line-height: 1.9;
+            font-size: 1.08rem;
+        }
+
+        .credits-table td {
+            background: rgba(255,255,255,0.96);
         }
 
 
@@ -854,7 +913,6 @@
             animation: none;
         }
     </style>
-</head>
 <body>
     <header class="hero" role="banner">
         <nav class="topnav" aria-label="Primary">
@@ -900,20 +958,20 @@
         </section>
 
         <!-- History Section -->
-        <section id="history" class="history section-bg-2">
+        <section id="history" class="history">
             <h2>Our History</h2>
             <p>
-                The story of amber is as ancient as time itself—a fossilized resin that has captivated humanity for millennia. 
+                The story of <span class="highlight">amber</span> is as ancient as time itself—a fossilized resin that has captivated humanity for millennia. 
                 From its early use as a talisman and gemstone in Neolithic times to its revered status in classical civilizations, 
-                amber has always been associated with warmth, protection, and natural beauty <sup>[1]</sup>. In the Middle East, 
-                particularly in the Gulf region, amber, known as <span class="highlight">Kahraman</span>, holds a special place, 
+                <span class="highlight">amber</span> has always been associated with warmth, protection, and natural beauty <sup>[1]</sup>. In the Middle East, 
+                particularly in the Gulf region, <span class="highlight">amber</span>, known as <span class="highlight">Kahraman</span>, holds a special place, 
                 especially when fashioned into prayer beads or <span class="italic-text">Masbaha</span> <sup>[2]</sup>.
             </p>
             <p>
-                The journey of <span class="highlight">Royal Kahraman</span> began with a passion for this golden gem and a 
-                commitment to preserving the intricate craft of Misbah making. Inspired by the rich traditions of Kuwait, a 
-                prominent hub for prayer beads in the Gulf, we set out to bring authentic and high-quality Amber Misbah to a 
-                wider audience. Our history is woven with the threads of tradition, craftsmanship, and a profound respect for 
+                The journey of <span class="highlight">Royal Kahraman</span> began with a passion for this <span class="highlight">golden gem</span> and a 
+                commitment to preserving the intricate craft of Misbah making. Inspired by the rich <span class="highlight">traditions</span> of Kuwait, a 
+                prominent hub for prayer beads in the Gulf, we set out to bring authentic and high-quality <span class="highlight">Amber Misbah</span> to a 
+                wider audience. Our history is woven with the threads of <span class="highlight">tradition</span>, <span class="highlight">craftsmanship</span>, and a profound respect for 
                 the cultural significance of each piece we create.
             </p>
         </section>
@@ -1111,9 +1169,9 @@
             <h2>Contact Information</h2>
             <p>For inquiries, custom orders, or further information, please contact the <span class="highlight">Royal Kahraman</span> team:</p>
             <div class="contact-info">
-                <p><strong>Email:</strong> info@royalkahraman.com (Placeholder)</p>
-                <p><strong>Phone:</strong> +965 [Placeholder Number]</p>
-                <p><strong>Showroom:</strong> Kuwait City, Kuwait (Placeholder)</p>
+                <p><strong>Email:</strong> info@royalkahraman.com </p>
+                <p><strong>Phone:</strong> +9965 98966545</p>
+                <p><strong>Showroom:</strong> Kuwait City, Kuwait </p>
             </div>
         </section>
 
@@ -1186,5 +1244,7 @@
             }));
         })();
     </script>
-</body>
+<!-- Code injected by Five-server -->
+  <script async data-id="five-server" data-file="c:\Users\Administrator\Downloads\Amber Jewelry Web Content Writing Guide\index.html" type="application/javascript" src="/fiveserver.js"></script>
+  </body>
 </html>
